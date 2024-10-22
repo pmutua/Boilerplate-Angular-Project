@@ -2,10 +2,6 @@
 
 This Angular project is a scalable and well-structured enterprise-level application designed to handle various features and functionalities efficiently. The architecture follows best practices to promote modularity, reusability, and maintainability. It is built with core Angular concepts like modules, services, interceptors, and routing, with an emphasis on scalability for large applications.
 
-# Project Description
-
-This Angular project is a scalable and well-structured enterprise-level application designed to handle various features and functionalities efficiently. The architecture follows best practices to promote modularity, reusability, and maintainability. It is built with core Angular concepts like modules, services, interceptors, and routing, with an emphasis on scalability for large applications.
-
 ## Key Features
 - **Core Module**: Contains essential services and utilities that should be instantiated only once during the lifetime of the app, such as authentication, global error handling, and logging services.
 - **Shared Module**: Houses reusable components, directives, and pipes that can be shared across different features of the application, minimizing redundancy.
