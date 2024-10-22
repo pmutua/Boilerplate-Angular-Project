@@ -7,6 +7,7 @@ export default [
   {
     ignores: [
       "**/commitlint.config.js",
+      "README.md",
       "**/temp.js",
       "config/*",
       "node_modules/*",
