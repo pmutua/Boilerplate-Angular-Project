@@ -2,26 +2,38 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
 
-## Development server
+## Project Structure
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```markdown
+/project
+│
+├── /e2e/ # End-to-End Testing (Protractor or Cypress)
+├── /src/ # Application Source Files
+│ ├── /app/ # Main Application Code
+│ │ ├── /core/ # Singleton services and global utilities
+│ │ ├── /shared/ # Shared components, directives, and pipes
+│ │ ├── /features/ # Feature modules for different app features
+│ │ ├── /models/ # Global application-wide models (interface)
+│ │ ├── /assets/ # Static Assets like images, fonts, etc.
+│ │ ├── /environments/ # Environment configurations (dev, prod)
+│ │ ├── /styles/ # Global styles and theming
+│ │ ├── /app-routing.module.ts # Main app routing file
+│ │ └── /app.module.ts # Root module for the app
+│ ├── /environments/ # Environment settings
+│ ├── /index.html # Main HTML file
+│ ├── /main.ts # Main entry point of the application
+│ ├── /polyfills.ts # Polyfills for older browser support
+│ ├── /styles.scss # Global stylesheet (optional SCSS or CSS)
+│ └── /test.ts # Test entry point
+├── .browserslistrc # Browser compatibility list for build tools
+├── .editorconfig # Code style configuration for IDEs
+├── .eslintrc.json # ESLint configuration file
+├── .gitignore # Git ignore rules
+├── angular.json # Angular CLI configuration file
+├── karma.conf.js # Karma test runner configuration
+├── package.json # Dependencies and scripts
+├── README.md # Project documentation
+├── tsconfig.app.json # TypeScript config for the application
+├── tsconfig.spec.json # TypeScript config for unit tests
+└── tslint.json # TSLint configuration (if using TSLint)
+```
