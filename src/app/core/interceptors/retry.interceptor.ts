@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retryWhen, delay, take } from 'rxjs/operators';
-
+/**
+Purpose: Automatically retries failed requests.
+Importance: Increases reliability by handling temporary failures without user intervention.
+*/
 @Injectable()
 export class RetryInterceptor implements HttpInterceptor {
   private maxRetries = 3;
