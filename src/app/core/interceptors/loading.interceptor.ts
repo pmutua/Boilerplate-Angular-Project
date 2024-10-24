@@ -3,7 +3,10 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { LoadingService } from '../services/loading.service';
-
+/**
+Purpose: Manages loading indicators during HTTP requests.
+Importance: Enhances user experience by visually indicating ongoing processes.
+*/
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
   constructor(private _loadingService: LoadingService) {}
