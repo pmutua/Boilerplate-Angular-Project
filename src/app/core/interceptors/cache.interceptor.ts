@@ -3,6 +3,10 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+/**
+Purpose: Caches responses from HTTP requests.
+Importance: Improves performance and reduces redundant network calls.
+*/
 @Injectable()
 export class CacheInterceptor implements HttpInterceptor {
   private cache: { [url: string]: any } = {};
