@@ -6,6 +6,8 @@ import { AppException, HttpException } from '../../exceptions';
 
 /**
  * ErrorInterceptor to handle HTTP errors globally.
+ Purpose: Centralizes error handling for HTTP responses.
+ Importance: Improves error management and enhances user experience by providing consistent feedback.
  */
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
