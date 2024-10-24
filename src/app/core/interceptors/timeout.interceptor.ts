@@ -3,6 +3,10 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable, throwError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
 
+/**
+Purpose: Sets timeouts for HTTP requests.
+Importance: Prevents the application from hanging indefinitely, improving user experience.
+*/
 @Injectable()
 export class TimeoutInterceptor implements HttpInterceptor {
   private timeoutMs = 5000; // 5 seconds timeout
