@@ -1,23 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-/**
-Purpose: Automatically adds authentication tokens (e.g., JWT) to outgoing requests.
-Importance: Essential for maintaining security by ensuring that only authenticated users can access protected resources.
-*/
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token');
+    // Retrieve the token from localStorage
+    const token = localStorage.getItem('token')
+
     if (token) {
       const cloned = req.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
+          // Add the token to the Authorization header
+          Authorization: `Bearer ${token}`,
+        },
       });
+      // Proceed with the modified request
       return next.handle(cloned);
     }
+
+    // Proceed without modifying the request
     return next.handle(req);
   }
 }
