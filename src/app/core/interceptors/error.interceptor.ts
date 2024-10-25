@@ -1,18 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AppException, HttpException } from '../../exceptions';
+import { ErrorHandlerService } from '../services/error-handler.service';
+import { AppException } from '../exceptions/app-exception';
 
 /**
  * ErrorInterceptor to handle HTTP errors globally.
- Purpose: Centralizes error handling for HTTP responses.
- Importance: Improves error management and enhances user experience by providing consistent feedback.
+ * Purpose: Centralizes error handling for HTTP responses.
+ * Importance: Improves error management and enhances user experience by providing consistent feedback.
  */
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
+
+  constructor(private errorHandler: ErrorHandlerService) {}
+
   /**
-   * Intercept HTTP responses and handle errors using custom exceptions.
+   * Intercepts HTTP responses and handles errors using custom exceptions.
    * @param req - The HTTP request to be intercepted.
    * @param next - The next interceptor in the chain.
    * @returns {Observable<HttpEvent<any>>} - The HTTP event or error.
@@ -20,22 +25,11 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        // Handle the error using custom exceptions
-        let customError: AppException;
+        // Pass the error to the ErrorHandlerService for centralized handling
+        this.errorHandler.handleError(error);
 
-        if (error.error instanceof ErrorEvent) {
-          // Client-side error
-          customError = new AppException('Client Error', error.error.message);
-        } else {
-          // Server-side error
-          customError = new HttpException(error.status, error.message);
-        }
-
-        // Log the custom error
-        console.error(customError);
-        
-        // Optionally, you could further customize the error message or throw different types of errors
-        return throwError(customError);
+        // Optionally, throw the error to the next handler
+        return throwError(() => new AppException('An error occurred during the request.'));
       })
     );
   }
