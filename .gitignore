@@ -12,8 +12,10 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 #angular
 .angular/
+.angular
 #vscode
 .vscode/
+.vscode
 # Runtime data
 pids
 *.pid
