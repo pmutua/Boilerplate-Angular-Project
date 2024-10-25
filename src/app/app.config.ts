@@ -1,9 +1,9 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { CacheInterceptor } from './core/interceptors/cache.interceptor';
 import { CustomHeaderInterceptor } from './core/interceptors/custom-header.interceptor';
@@ -12,6 +12,8 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { LoggingInterceptor } from './core/interceptors/logging.interceptor';
 import { RetryInterceptor } from './core/interceptors/retry.interceptor';
 import { TimeoutInterceptor } from './core/interceptors/timeout.interceptor';
+import { TranslocoHttpLoader } from './transloco-loader';
+import { provideTransloco } from '@jsverse/transloco';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -61,6 +63,15 @@ export const appConfig: ApplicationConfig = {
       multi: true
     },
     provideRouter(routes),
-    provideClientHydration(),
+    provideClientHydration(), provideHttpClient(), provideTransloco({
+        config: { 
+          availableLangs: ['en'],
+          defaultLang: 'en',
+          // Remove this option if your application doesn't support changing language in runtime.
+          reRenderOnLangChange: true,
+          prodMode: !isDevMode(),
+        },
+        loader: TranslocoHttpLoader
+      }),
   ]
 };
