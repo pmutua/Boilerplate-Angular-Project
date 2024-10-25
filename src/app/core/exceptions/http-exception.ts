@@ -1,4 +1,6 @@
-import { AppException } from './app.exception';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AppException } from "./app-exception";
+
 
 /**
  * Exception class for handling HTTP-related errors.
