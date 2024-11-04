@@ -2,12 +2,19 @@
 
 This Angular project is a scalable and well-structured enterprise-level application designed to handle various features and functionalities efficiently. The architecture follows best practices to promote modularity, reusability, and maintainability. It is built with core Angular concepts like modules, services, interceptors, and routing, with an emphasis on scalability for large applications.
 
+
+
 ## Key Features
-- **Core Module**: Contains essential services and utilities that should be instantiated only once during the lifetime of the app, such as authentication, global error handling, and logging services.
+
+1. Supabase Database - a Postgres database for storing your user data and Row Level Security so data is protected and users can only access their own information.
+2. Supabase Auth - allow users to sign up and log in.
+3. Supabase Storage - users can upload a profile photo.
+
+<!-- - **Core Module**: Contains essential services and utilities that should be instantiated only once during the lifetime of the app, such as authentication, global error handling, and logging services.
 - **Shared Module**: Houses reusable components, directives, and pipes that can be shared across different features of the application, minimizing redundancy.
 - **Feature Modules**: Each feature of the application (e.g., User Management, Product Management) has its own dedicated module, complete with its routing, components, and services. This modular approach ensures the app is easy to scale and maintain.
 - **Models**: Interfaces or classes representing data models (e.g., User, Product) used consistently throughout the application.
-- **Services**: Singleton services located in the core module and shared services used across multiple features, ensuring separation of concerns and code reuse.
+- **Services**: Singleton services located in the core module and shared services used across multiple features, ensuring separation of concerns and code reuse. -->
 
 ## Project Structure
 
